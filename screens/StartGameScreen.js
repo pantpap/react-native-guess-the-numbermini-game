@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     elevation: 4, // add shadow to the element. Works only for android
     padding: 16,
-    backgroundColor: '#4e0329',
+    backgroundColor: '#3b021f',
     // Adding shadow for IOS devices
     shadowColor: 'black',
     shadowOffset: {width: 0, height: 2},
