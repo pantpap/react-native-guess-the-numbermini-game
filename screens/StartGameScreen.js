@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {TextInput, View, StyleSheet, Alert} from 'react-native'
 import PrimaryButton from "../components/PrimaryButton";
+import Colors from "../constanst/colors";
 
 const StartGameScreen = ({onConfirmInput}) => {
 
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     elevation: 4, // add shadow to the element. Works only for android
     padding: 16,
-    backgroundColor: '#3b021f',
+    backgroundColor: Colors.primary800,
     // Adding shadow for IOS devices
     shadowColor: 'black',
     shadowOffset: {width: 0, height: 2},
@@ -68,9 +69,9 @@ const styles = StyleSheet.create({
     width: 50,
     textAlign: 'center',
     fontSize: 32,
-    borderBottomColor: '#ddb52f',
+    borderBottomColor: Colors.primaryYellow,
     borderBottomWidth: 2,
-    color: '#ddb52f',
+    color: Colors.primaryYellow,
     marginVertical: 8,
     fontWeight: 'bold'
   },
