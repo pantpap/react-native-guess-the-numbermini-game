@@ -15,7 +15,7 @@ export default function App() {
   let screen = <StartGameScreen onConfirmInput={userInputHandler}/>
 
   if(userInput){
-    screen = <GameScreen />
+    screen = <GameScreen userInput={userInput} />
   }
   return (
     <LinearGradient colors={[Colors.primary700 ,Colors.primaryYellow]} style={styles.rootScreen}>
