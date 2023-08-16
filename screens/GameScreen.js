@@ -1,6 +1,6 @@
 import {Alert, StyleSheet, Text, View} from "react-native";
 import Title from "../components/ui/Title";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
 
@@ -17,9 +17,15 @@ const generateRandomNumber = (min, max, exclude) => {
 let min = 1;
 let max = 100
 
-const GameScreen = ({userInput}) => {
-  const initialNumber = generateRandomNumber(min, max, userInput)
+const GameScreen = ({userInput, onGameOver}) => {
+  const initialNumber = generateRandomNumber(1, 100, userInput)
   const [currentGuess, setCurrentGuess] = useState(initialNumber);
+
+  useEffect(() => {
+    if(currentGuess === userInput){
+      onGameOver();
+    }
+  }, [currentGuess, userInput, onGameOver]);
 
   const handlePress = (operator) => {
     if((operator === 'minus' && currentGuess < userInput) || (operator === 'plus' && currentGuess > userInput)){
