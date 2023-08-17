@@ -1,7 +1,8 @@
 import {useState} from "react";
-import {TextInput, View, StyleSheet, Alert} from 'react-native'
+import {TextInput, View, StyleSheet, Alert, Text} from 'react-native'
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Colors from "../constanst/colors";
+import Title from "../components/ui/Title";
 
 const StartGameScreen = ({onConfirmInput}) => {
 
@@ -26,22 +27,26 @@ const StartGameScreen = ({onConfirmInput}) => {
   }
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        maxLength={2}
-        keyboardType="number-pad"
-        autoCorrect={false}
-        autoCapitalize='none'
-        value={enteredValue}
-        onChangeText={numberInputHandler}
-      />
-      <View style={styles.buttonsContainer}>
-        <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={resetHandler}>Reset</PrimaryButton>
-        </View>
-        <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={confirmHandler}>Confirm</PrimaryButton>
+    <View style={styles.rootContainer}>
+      <Title>Guess the Number</Title>
+      <View style={styles.container}>
+        <Text style={styles.title}>Enter a Number</Text>
+        <TextInput
+          style={styles.input}
+          maxLength={2}
+          keyboardType="number-pad"
+          autoCorrect={false}
+          autoCapitalize='none'
+          value={enteredValue}
+          onChangeText={numberInputHandler}
+        />
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={resetHandler}>Reset</PrimaryButton>
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={confirmHandler}>Confirm</PrimaryButton>
+          </View>
         </View>
       </View>
     </View>
@@ -49,10 +54,15 @@ const StartGameScreen = ({onConfirmInput}) => {
 }
 
 const styles = StyleSheet.create({
+  rootContainer: {
+    flex: 1,
+    marginTop: 100,
+    alignItems: 'center'
+  },
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 100,
+    marginTop: 36,
     marginHorizontal: 24,
     borderRadius: 8,
     elevation: 4, // add shadow to the element. Works only for android
@@ -63,6 +73,10 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 2},
     shadowRadius: 6,
     shadowOpacity: 0.25
+  },
+  title: {
+    color: Colors.primaryYellow,
+    fontSize: 24
   },
   input: {
     height: 50,
