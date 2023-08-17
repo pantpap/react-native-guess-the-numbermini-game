@@ -3,6 +3,8 @@ import {TextInput, View, StyleSheet, Alert, Text} from 'react-native'
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Colors from "../constanst/colors";
 import Title from "../components/ui/Title";
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
 
 const StartGameScreen = ({onConfirmInput}) => {
 
@@ -29,8 +31,8 @@ const StartGameScreen = ({onConfirmInput}) => {
   return (
     <View style={styles.rootContainer}>
       <Title>Guess the Number</Title>
-      <View style={styles.container}>
-        <Text style={styles.title}>Enter a Number</Text>
+      <Card>
+        <InstructionText>Enter a Number</InstructionText>
         <TextInput
           style={styles.input}
           maxLength={2}
@@ -48,7 +50,7 @@ const StartGameScreen = ({onConfirmInput}) => {
             <PrimaryButton onPress={confirmHandler}>Confirm</PrimaryButton>
           </View>
         </View>
-      </View>
+      </Card>
     </View>
   )
 }
@@ -59,25 +61,8 @@ const styles = StyleSheet.create({
     marginTop: 100,
     alignItems: 'center'
   },
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 36,
-    marginHorizontal: 24,
-    borderRadius: 8,
-    elevation: 4, // add shadow to the element. Works only for android
-    padding: 16,
-    backgroundColor: Colors.primary800,
-    // Adding shadow for IOS devices
-    shadowColor: 'black',
-    shadowOffset: {width: 0, height: 2},
-    shadowRadius: 6,
-    shadowOpacity: 0.25
-  },
-  title: {
-    color: Colors.primaryYellow,
-    fontSize: 24
-  },
+
+
   input: {
     height: 50,
     width: 50,
