@@ -4,8 +4,8 @@ import {useEffect, useState} from "react";
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Card from "../components/ui/Card";
-import Colors from "../constanst/colors";
 import InstructionText from "../components/ui/InstructionText";
+import {Ionicons} from '@expo/vector-icons'
 
 const generateRandomNumber = (min, max, exclude) => {
   const randomNumber = Math.floor(Math.random() * (max - min)) + min;
@@ -49,10 +49,18 @@ const GameScreen = ({userInput, onGameOver}) => {
       <Title>Players Choice</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card>
-        <InstructionText>Higher or Lower?</InstructionText>
-        <View>
-          <PrimaryButton onPress={() => handlePress('plus')}>+</PrimaryButton>
-          <PrimaryButton onPress={() => handlePress('minus')}>-</PrimaryButton>
+        <InstructionText style={styles.instructionText}>Higher or Lower?</InstructionText>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={() => handlePress('plus')}>
+              <Ionicons name={'md-add'} size={24} color={'white'}/>
+            </PrimaryButton>
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={() => handlePress('minus')}>
+              <Ionicons name={'md-remove'} size={24} color={'white'}/>
+            </PrimaryButton>
+          </View>
         </View>
       </Card>
       <View>
@@ -67,6 +75,15 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24
   },
+  instructionText: {
+    marginBottom: 12
+  },
+  buttonsContainer: {
+    flexDirection: 'row'
+  },
+  buttonContainer: {
+    flex: 1
+  }
 })
 
 export default GameScreen;

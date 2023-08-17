@@ -61,8 +61,6 @@ const styles = StyleSheet.create({
     marginTop: 100,
     alignItems: 'center'
   },
-
-
   input: {
     height: 50,
     width: 50,
