@@ -30,6 +30,11 @@ const GameScreen = ({userInput, onGameOver}) => {
     }
   }, [currentGuess, userInput, onGameOver]);
 
+  useEffect(() => {
+    min = 1;
+    max = 100;
+  }, []);
+
   const handlePress = (operator) => {
     if((operator === 'minus' && currentGuess < userInput) || (operator === 'plus' && currentGuess > userInput)){
       Alert.alert('You MUST play fair',
