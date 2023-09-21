@@ -1,11 +1,11 @@
-import {Alert, StyleSheet, Text, View} from "react-native";
+import {Alert, StyleSheet, Text, View, FlatList} from "react-native";
 import Title from "../components/ui/Title";
 import {useEffect, useState} from "react";
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Card from "../components/ui/Card";
 import InstructionText from "../components/ui/InstructionText";
-import {Ionicons} from '@expo/vector-icons'
+import {Ionicons} from '@expo/vector-icons';
 
 const generateRandomNumber = (min, max, exclude) => {
   const randomNumber = Math.floor(Math.random() * (max - min)) + min;
@@ -74,7 +74,12 @@ const GameScreen = ({userInput, onGameOver}) => {
         </View>
       </Card>
       <View>
-        {guessRounds.map(guessRound => <Text key={guessRound}>{guessRound}</Text>)}
+        {/* {guessRounds.map(guessRound => <Text key={guessRound}>{guessRound}</Text>)} */}
+        <FlatList 
+          data={guessRounds} 
+          renderItem={(itemData)=> <Text>{itemData.item}</Text>}
+          keyExtractor={(item)=>item}
+          />
       </View>
     </View>
   )
