@@ -76,11 +76,11 @@ const GameScreen = ({userInput, onGameOver}) => {
           </View>
         </View>
       </Card>
-      <View>
+      <View style={styles.listContainer}>
         {/* {guessRounds.map(guessRound => <Text key={guessRound}>{guessRound}</Text>)} */}
         <FlatList 
           data={guessRounds} 
-          renderItem={(itemData)=> <GuessLogItem roundNumber={4}guess={itemData.item}/>}
+          renderItem={(itemData)=> <GuessLogItem roundNumber={guessRoundListLength - itemData.index}guess={itemData.item}/>}
           keyExtractor={(item)=>item}
           />
       </View>
@@ -101,6 +101,10 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1
+  },
+  listContainer:{
+    flex: 1,
+    padding: 16
   }
 })
 
