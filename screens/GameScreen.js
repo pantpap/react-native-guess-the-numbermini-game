@@ -23,6 +23,7 @@ let max = 100
 const GameScreen = ({userInput, onGameOver}) => {
   const initialNumber = generateRandomNumber(1, 100, userInput)
   const [currentGuess, setCurrentGuess] = useState(initialNumber);
+  const [guessRounds, setGuessRounds] = useState([initialNumber])
 
   useEffect(() => {
     if(currentGuess === userInput){
@@ -30,6 +31,7 @@ const GameScreen = ({userInput, onGameOver}) => {
     }
   }, [currentGuess, userInput, onGameOver]);
 
+  // reset boundaries to initial values
   useEffect(() => {
     min = 1;
     max = 100;
@@ -46,7 +48,10 @@ const GameScreen = ({userInput, onGameOver}) => {
     } else {
       min = currentGuess;
     }
-    setCurrentGuess( generateRandomNumber(min, max, currentGuess))
+
+    const newRndNumber = generateRandomNumber(min, max, currentGuess)
+    setCurrentGuess( newRndNumber );
+    setGuessRounds(prevGuessRounds => [newRndNumber, ...prevGuessRounds])
   }
 
   return (
@@ -69,7 +74,7 @@ const GameScreen = ({userInput, onGameOver}) => {
         </View>
       </Card>
       <View>
-        <Text>Log Rounds</Text>
+        {guessRounds.map(guessRound => <Text key={guessRound}>{guessRound}</Text>)}
       </View>
     </View>
   )
